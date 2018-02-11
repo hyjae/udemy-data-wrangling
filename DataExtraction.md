@@ -1,4 +1,5 @@
-## Data Extraction
+Data Extraction
+======
 Tabular
 ------
 
@@ -38,3 +39,67 @@ consumer product and producer product
 - Document oriented vs Data oriented
 
 #### Parsing XML
+- .tag: see the all nested tags
+- .find: find a single tag
+- .text: returns text
+
+Data Wrangling Procedure
+-----
+#### HTML
+- Build list of values you need(Grab)
+- Make HTTP request to download all data
+- Parse the data file
+
+#### Developer Tool
+- Form Data: It tells the number of parameters needed to pass as a part of requrests
+- For the most cases, there are hidden form requests
+
+#### BeautifulSoup
+- Parse the html trees; similar to XML parsing tree
+
+#### Best Pratice for Scraping
+- Look at how a browser makes requests(developer tools)
+- Emulate in code
+- If it breaks up, look at your http traffic
+
+Data Cleaning
+=====
+- Data cleaning is an iterative process
+- Missing, outlier, different formats(date), etc
+
+### Sources of Dirty Data
+- User entry errors
+- Different schemas
+- Legacy systems
+- Evolving applications
+- Lost from data migration
+- No unique identifiers
+- Programmer errors
+- Corruption in transmission
+
+### Measures of Data Quality
+- Validity: Conforms to a schema 
+- Accuracy: Conforms to gold standard
+    - ex) Trusted addresses to verify the addresses in source
+- Completeness: All records?
+- Consistency: Match fields across systems
+- Uniformity: Same units
+
+### Clearning Procedure
+- Audit your data using validation tools
+- Auditing validity
+    - unique value
+    - mandatory value
+    - foreign-key constraints
+    - certain range, format(size, date etc)
+    
+- Create a data cleaning plan
+    - Identify causes
+    - Define operations
+    - Test
+- Execute plan(running a script)
+- Manually correct
+
+### Auditing a Cross-Field Constraint
+- Multiple fields per item
+
