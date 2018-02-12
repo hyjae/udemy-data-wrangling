@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Your task in this exercise is to modify 'extract_carrier()` to get a list of
-all airlines. Exclude all of the combination values like "All U.S. Carriers"
+get a list of all airlines. Exclude all of the combination values like "All U.S. Carriers"
 from the data that you return. You should return a list of codes for the
 carriers.
 

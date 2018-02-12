@@ -1,6 +1,4 @@
 """
-Your task is to check the "productionStartYear" of the DBPedia autos datafile for valid values.
-The following things should be done:
 - check if the field "productionStartYear" contains a year
 - check if the year is in range 1886-2014
 - convert the value of the field to be just a year (not full datetime)
@@ -12,9 +10,6 @@ The following things should be done:
 - discard rows (neither write to good nor bad) if the URI is not from dbpedia.org
 - you should use the provided way of reading and writing data (DictReader and DictWriter)
   They will take care of dealing with the header.
-
-You can write helper functions for checking the data and writing the files, but we will call only the
-'process_file' with 3 arguments (inputfile, output_good, output_bad).
 """
 import csv
 import re
@@ -24,69 +19,75 @@ INPUT_FILE = 'autos.csv'
 OUTPUT_GOOD = 'autos-valid.csv'
 OUTPUT_BAD = 'FIXME-autos.csv'
 
-def check_url(url):
-    match = re.search('dbpedia.org', url)
-    if match is not None:
-        return True
-    return False
 
-
-def get_year(productionStartYear):
-    return re.sub(r"\D", "", productionStartYear)[0:4]
-
-
-def check_year(productionStartYear):
-
-    if productionStartYear == 'NULL':
-        return False
-
-    date = get_year(productionStartYear)
-    if int(date) < 1886 or int(date) > 2014:
-        return False
-    return True
-
-
-def write_file(output, index, reader, years):
-
-    header = reader.fieldnames
-
-    with open(output, "w") as g:
-        writer = csv.DictWriter(g, delimiter=",", fieldnames=header)
+def write_file(output_file, header, data):
+    with open(output_file, 'w') as w:
+        writer = csv.DictWriter(w, delimiter=',', fieldnames=header)
         writer.writeheader()
-        for i, row in enumerate(reader, -1):
-            if i in index:
-                #row['producntionStartyear'] = years[i]
-                writer.writerow(row)
-    g.close()
+
+        for datum in data:
+            writer.writerow(datum)
+    w.close()
 
 
 def process_file(input_file, output_good, output_bad):
 
-    good_indexes = []
-    bad_indexes = []
-    years = []
+    good_data = []
+    bad_data = []
+    header = 'NULL'
 
-    with open(input_file, "r") as f:
+    with open(input_file, 'r') as f:
         reader = csv.DictReader(f)
-        for da in reader:
-            print(da)
+        header = reader.fieldnames
 
-        # Note: reader starts from the second line of csv file assigning
-        # the first line as a header. Second line corresponds the index of 0
-        for i, datum in enumerate(reader):
-            #years.append(check_year(datum['productionStartyear']))
-            if check_url(datum['URI']) is False:
+        for datum in reader:
+
+            """
+            returns the lowest index in string
+            if row['URI'].find('dbpedia.org) < 0:
+            """
+
+            """
+            Alternative way to avoid continue
+
+            for row in reader:
+            # validate URI value
+            if row['URI'].find("dbpedia.org") < 0:
                 continue
-            if check_year(datum['productionStartYear']) is True:
-                good_indexes.append(i)
-            else:
-                bad_indexes.append(i)
 
-        f.seek(0)
-        write_file(output_good, good_indexes, reader, years)
-        f.seek(0)
-        write_file(output_bad, bad_indexes, reader, years)
+            ps_year = row['productionStartYear'][:4]
+            try: # use try/except to filter valid items
+                ps_year = int(ps_year)
+                row['productionStartYear'] = ps_year
+                if (ps_year >= 1886) and (ps_year <= 2014):
+                    data_good.append(row)
+                else:
+                    data_bad.append(row)
+            except ValueError: # non-numeric strings caught by exception
+                if ps_year == 'NULL':
+                    data_bad.append(row)
+            """
+
+
+            if re.search('dbpedia.org', datum['URI']) is None:
+                continue
+
+            year = datum['productionStartYear']
+            if year != 'NULL':
+
+                """
+                scope[0:4] = [:4]
+                """
+                year_digits = int(re.sub(r'\D', '', year)[0:4])
+                if year_digits >= 1886 and year_digits <= 2014:
+                    datum['productionStartYear'] = year_digits
+                    good_data.append(datum)
+                    continue
+            bad_data.append(datum)
         f.close()
+
+    write_file(output_good, header, good_data)
+    write_file(output_bad, header, bad_data)
 
 
 def test():
