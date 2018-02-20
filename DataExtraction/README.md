@@ -16,7 +16,7 @@ Tabular
 - Prone to error due to the extra ',' or others
 - Using csv.DictReader
 to avoid this problem  
-ex) [beatles_csv.py](https://github.com/yjhnnn/DataWrangling/DataExtraction/beatles_csv.py)
+ex) [beatles_csv.py](https://github.com/yjhnnn/DataWrangling/blob/master/DataExtraction/beatles_csv.py)
 
 XLRD
 ------
@@ -44,7 +44,7 @@ http://httpbin.org/get?key2=value2&key1=value1
    - Using dumps function to print out 
    - Using codecs module to write unicode files
    - Using authentication with web APIs  
-   ex) [nytimes_json.py](https://github.com/yjhnnn/DataWrangling/DataExtraction/nytimes_json.py)
+   ex) [nytimes_json.py](https://github.com/yjhnnn/DataWrangling/blob/master/DataExtraction/nytimes_json.py)
 
 XML
 ------
