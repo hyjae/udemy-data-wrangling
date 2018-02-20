@@ -8,16 +8,16 @@ Data cleaning is an iterative process to find missing data, outlier, different f
     - date: unnecessary chars, range, format check
     - Separate them into two files; good, bad output for later use  
     - Useful module: **re.sub()**
-    - [validity.py](https://github.com/yjhnnn/DataWrangling/DataCleaning/validity.py)
+    - [validity.py](https://github.com/yjhnnn/DataWrangling/blob/master/DataCleaning/validity.py)
 - Multiple Data
     - ex) names, addresses, nationalities and so on
     - Putting them in a dictionary with a list of values
-    - [name.py](https://github.com/yjhnnn/DataWrangling/DataCleaning/name.py)
+    - [name.py](https://github.com/yjhnnn/DataWrangling/blob/master/DataCleaning/name.py)
 - Auditing
     - Store the possible types of each col as a set in a dictionary
     - Useful function: **set** to prevent dulicates
     - Determining one value using the most sig digits
-    - [audit.py](https://github.com/yjhnnn/DataWrangling/DataCleaning/audit.py)
+    - [audit.py](https://github.com/yjhnnn/DataWrangling/blob/master/DataCleaning/audit.py)
 
 ### Sources of Dirty Data
 - User entry errors
