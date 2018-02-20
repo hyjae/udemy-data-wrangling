@@ -1,10 +1,14 @@
-Data Wrangling
+Data Wrangling with MongoDB
 =====
-Data Extraction
-----
-Screen Scraping
-----
-Data Clearning
-----
-MongoDB
-----
+Repo for data wrangling with MongoDB course by Udacity
+
+1. Audit
+2. Develop plan for clearning
+3. Write code to clean
+4. Repeat
+
+[1. Data Extraction](https://github.com/yjhnnn/DataWrangling/tree/master/DataCleaning/DataExtraction.md)  
+[2. Screen Scraping](https://github.com/yjhnnn/DataWrangling/tree/master/ScreenScraping/ScreenScraping.md)  
+[3. Data Clearning](https://github.com/yjhnnn/DataWrangling/tree/master/DataCleaning/DataCleaning.md)  
+[4. MongoDB](https://github.com/yjhnnn/DataWrangling/tree/master/MongoDB/MongoDB.md)  
+[5. Open Street Map](https://github.com/yjhnnn/DataWrangling/tree/master/OpenStreetMap/OpenStreetMap.md)

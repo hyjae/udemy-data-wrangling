@@ -1,7 +1,7 @@
 Data Cleaning
 =====
-- Data cleaning is an iterative process
-- Missing, outlier, different formats(date), etc
+Data cleaning is an iterative process to find missing data, outlier, different formats(date).
+
 
 ### Strategy
 - Validity

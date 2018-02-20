@@ -12,7 +12,8 @@ def check_loc(point, lat, longi):
     combined = lat + ' ' + longi
     if point == combined:
         return True
-    else: return False
+    else:
+        return False
 
 def process_file(filename):
     data = []

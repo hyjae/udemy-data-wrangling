@@ -1,5 +1,12 @@
 Data Extraction
 ======
+Basic extraction method based on the types of files.  
+**Summary**
+1. Tabular - csv.DictReader
+2. XLRD
+3. JSON 
+4. XML - xml.etree.ElementTree
+
 Tabular
 ------
 
@@ -49,6 +56,9 @@ consumer product and producer product
 - Document oriented vs Data oriented
 
 #### Parsing XML
+```python
+import xml.etree.ElementTree as ET
+```
 - .tag: see the all nested tags
 - .find: find a single tag
 - .text: returns text

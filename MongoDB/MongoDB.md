@@ -6,7 +6,9 @@ For example, mongod is a demon that's running mongodb.
 You have python app that includes pymongo module. 
 Using this pymongo, you can send requests and receive responses
 from mongodb. PyMongo communicates with database using data protocol
-with the format of bson.
+with the format of bson.  
+
+Using PyMongo
 ```python
 from pymongo import MongoClient
 import pprint
@@ -71,7 +73,21 @@ db.cities.find({ "governmentType" : { "$regex" : "friendship" }})
 db.cities.find({ "governmentType" : { "$regex" : "[Ff]riendship" }})
 ```
 
-### Scalar
+Pipeline
+-----
+### Aggregation
+- $project
+- $match
 ```python
-
+pipeline = [ { "$match" : { "user.time_zone" : "Brasilia" ,
+                            "user.statuses_count" : { "$gte" : 100 } } },
+             { "$project" : { "followers" : "$user.followers_count",
+                              "screen_name" : "$user.screen_name", 
+                              "tweets" : "$user.statuses_count" } },
+             { "$sort" : { "followers" : -1 } },
+             { "$limit" : 1 } ]
 ```
+- $group
+- $sort
+- $skip
+- $unwind
